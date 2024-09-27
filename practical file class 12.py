@@ -1,4 +1,4 @@
-#Q1
+# Q1: Function to count the occurrence of each character in a given string
 def countcharacters(inputstring):
     charcount = {}
 
@@ -14,16 +14,17 @@ def countcharacters(inputstring):
 userinp = input("Enter a string: ")
 countcharacters(userinp)
 
-#Q2
+
+# Q2: Function to calculate the area of a rectangle
 def area(l, b):
-    return l*b
+    return l * b
 length = float(input("Enter length of the rectangle:"))
 breadth = float(input("Enter breadth of the rectangle:"))
 ar = area(length, breadth)
 print("The area of the rectangle is", ar) 
 
 
-#Q3
+# Q3: Program to check if a number is a palindrome or Armstrong number
 def palindrome(number):
     numstr = str(number)
     return numstr == numstr[::-1]
@@ -61,7 +62,7 @@ while True:
         print("Invalid choice. Please enter 1, 2, or 3.")
 
 
-#Q4
+# Q4: Function to generate the Fibonacci series up to 'n' terms
 def fibonacciseries(n):
     fibseries = [0, 1]
     while len(fibseries) < n:
@@ -71,13 +72,13 @@ n = int(input("Enter value of n:"))
 print("Fibonacci Series up to", n, fibonacciseries(n))
 
 
-#Q5
+# Q5: Program to simulate rolling a dice until the user exits
 import random
 def roll_a_dice():
     return random.randint(1, 6)
 
 while True:
-    print("t-> to through a dice!")
+    print("t-> to throw a dice!")
     print("e-> to exit!")
     r = input("Enter your choice, t or e => ")
 
@@ -89,7 +90,7 @@ while True:
         break
 
 
-#Q6
+# Q6: Program to count the number of alphabets, digits, spaces, and special characters in a file
 myfile = open("E:\\dreams.txt", "r")
 readin = myfile.read()
 alphabet = 0
@@ -113,7 +114,6 @@ for char in readin:
     else:
         spchar += 1
 
-
 print("Number of alphabets in the file is:", alphabet)
 print("Number of uppercase letters in the file is:", uppercase)
 print("Number of lowercase letters in the file is:", lowercase)
@@ -123,7 +123,7 @@ print("Number of special characters in the file is:", spchar)
 myfile.close()
 
 
-#Q7
+# Q7: Program to count the number of vowels, consonants, uppercase and lowercase letters in a file
 myfile = open("E:\\dreams.txt", "r")
 readin = myfile.read()
 vcount = 0
@@ -150,7 +150,7 @@ print("Number of lowercase letters in the file is:", lowercase)
 myfile.close()
 
 
-#Q8
+# Q8: Program to read a file and print words separated by '#'
 myfile = open("E:\\dreams.txt", "r")
 line = myfile.readline()
 
@@ -163,15 +163,16 @@ while line:
 myfile.close()
 
 
-#Q9
+# Q9: Program to print lines from a file that start with the letter 'T'
 myfile = open("E:\\dreams.txt", "r")
 for line in myfile:
     if line.startswith('T'):
         print(line)
-        
+
 myfile.close
 
-#Q10
+
+# Q10: Program to filter lines containing 'a' from a file and write the rest to another file
 with open("E:\\dreams.txt", "r") as infile, open("E:\\dreams_filtered.txt", "w") as outfile:
     for line in infile:
         if "a" in line.lower():
@@ -183,7 +184,7 @@ line = file1.read()
 print(line)
 
 
-#Q11
+# Q11: Program to write student records using pickle and search by roll number
 import pickle
 record = []
 
@@ -228,9 +229,7 @@ print("Data read successfully")
 search()
 
 
-
-
-#Q12
+# Q12: Program to write student records with marks, read, and update using pickle
 import pickle
 record = []
 
@@ -279,8 +278,7 @@ print("Data updated successfully!")
 read()
 
 
-
-#Q13
+# Q13: Program to generate a list of 5 unique random even numbers within a specified range
 import random
 even = []
 a1 = int(input("Enter lower limit: "))
@@ -294,40 +292,40 @@ while len(even) < 5:
 print(even)
 
 
-#Q14
+# Q14: Program to write, read, and search players' scores in a CSV file
 import csv
 def inplayers():
     with open("players.csv", "w", newline = '') as csvfile:
-        file = csv.writer(csvfile)
-        file.writerow(["Player", "Score"])
-        for i in range(10):
-            name = input("Enter player name: ")
-            score = int(input("Enter player's score:"))
-            data = [name, score]
-            file.writerow(data)
-
-def read():
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(["Name", "Score"])
+        while True:
+            name = input("Enter player's name: ")
+            score = int(input("Enter player's score: "))
+            csvwriter.writerow([name, score])
+            ch = input("Want to enter more records (Y/N)?: ")
+            if ch.lower() == "n":
+                break
+                
+def displayers():
     with open("players.csv", "r") as csvfile:
-        file = csv.reader(csvfile)
-        for i in file:
-            print(i)
+        csvreader = csv.reader(csvfile)
+        for row in csvreader:
+            print(row)
 
-def search():
+def searchplayer():
+    search = input("Enter player's name to search: ")
     with open("players.csv", "r") as csvfile:
-        file = csv.reader(csvfile)
-        next(file)
-        a = input("Enter the name of player you want to search: ")
-        for i in file:
-            if i[0] == a:
-                print("Player name:", i[0] ,"Score:", i[1])
+        csvreader = csv.reader(csvfile)
+        for row in csvreader:
+            if search == row[0]:
+                print(row)
 
 inplayers()
-read()
-print("Data written successfully!")
-search()
+displayers()
+searchplayer()
 
 
-#Q15
+# Q15: Program to compute the average of player scores from a CSV file
 import csv
 
 def user():
@@ -366,7 +364,7 @@ search()
 
 
 
-#Q16
+#Q16 Push Elements into Stack Based on Divisibility by 5
 def push(arr):
     stack = []
 
@@ -383,7 +381,7 @@ list2 = [int(num) for num in list1.split()]
 push(list2)
 
 
-#Q17
+#Q17  Pop an Element from the Stack
 def pop(stack):
     if not stack:
         print("Stack is empty. Cannot pop.")
